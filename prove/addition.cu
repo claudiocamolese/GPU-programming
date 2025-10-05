@@ -15,7 +15,7 @@ int main(void){
     int N = 1<<20;
     float *x = new float[N];
     float *y = new float[N];
-    float *f = new float[N]
+    float *f = new float[N];
 
     //CPU: initialize x and y
 
@@ -26,6 +26,8 @@ int main(void){
 
     // CPU: run on 1M elements
     add(N, x, y, f);
+
+    std::cout<< f<<std:endl;
 
 
     delete [] x;
