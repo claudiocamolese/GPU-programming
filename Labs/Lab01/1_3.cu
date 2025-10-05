@@ -3,16 +3,26 @@
 #include <chrono>
 #include <cuda_runtime.h>
 
+__global__ void gpu_sqrt(float *arr, int N) {
+    int idx = threadIdx.x + blockIdx.x * blockDim.x;
+    if (idx < N) {
+        arr[idx] = sqrtf(arr[idx]);
+    }
+}
 
-int main(int argc, char const *argv[])
-{
-    const int N = 1<<20; // 1 milione di elementi
-    const int SIZE = N  * sizeof(float);
+int main() {
+    const int N = 1 << 20; // 1 milione di elementi
+    const int SIZE = N * sizeof(float);
 
     // Alloca array CPU
     float *h_input = new float[N];
     float *h_output_cpu = new float[N];
     float *h_output_gpu = new float[N];
+
+    // Inizializza array
+    for (int i = 0; i < N; i++) {
+        h_input[i] = static_cast<float>(i);
+    }
 
     // ------------------ CPU ------------------
     auto start_cpu = std::chrono::high_resolution_clock::now();
@@ -60,10 +70,6 @@ int main(int argc, char const *argv[])
     delete[] h_input;
     delete[] h_output_cpu;
     delete[] h_output_gpu;
-
-    return 0;
-}
-
 
     return 0;
 }

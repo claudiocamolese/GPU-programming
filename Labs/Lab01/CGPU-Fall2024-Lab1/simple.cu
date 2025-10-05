@@ -9,11 +9,6 @@ __global__ void simple(float *c)
 	c[threadIdx.x] = threadIdx.x;
 }
 
-__global__ void square(float *c){
-	
-	c[threadIdx.x] = sqrtf(threadIdx.x);
-}
-
 int main()
 {
 	// Define problem size
@@ -37,8 +32,8 @@ int main()
 
 	dim3 dimGrid( 1, 1 );  //dim3 dimGrid(x_blocks, y_blocks=1, z_blocks=1);; here we have 1 blocks on x, 1 blocks on y and 1 blocks on z.
 
-	// Execute kernel, total_thread=16∗1=16
-	square<<<dimGrid, dimBlock>>>(c_d);
+	// Execute kernel, totale_thread=16∗1=16
+	simple<<<dimGrid, dimBlock>>>(c_d);
 
 	// Wait for kernel completion
 	cudaDeviceSynchronize();
