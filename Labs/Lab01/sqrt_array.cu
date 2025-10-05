@@ -38,7 +38,7 @@ int main() {
     cudaMemcpy(d_array, h_input, SIZE, cudaMemcpyHostToDevice);
 
     int blockSize = 256;
-    int gridSize = (N + blockSize - 1) / blockSize;
+    int gridSize = (N + blockSize - 1) / blockSize; //formula to use all the threads
 
     cudaEvent_t start, stop;
     cudaEventCreate(&start);

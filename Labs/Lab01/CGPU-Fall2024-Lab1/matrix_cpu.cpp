@@ -27,6 +27,7 @@ int main()
 			a[i+j*N] = 10 + i;
 			b[i+j*N] = float(j) / N;
 		}
+
 	
 	add_matrix(a, b, c, N);
 	
