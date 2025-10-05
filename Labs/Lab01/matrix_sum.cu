@@ -8,10 +8,10 @@ We must calculate an index from the thread and block numbers. That can look like
 __global__ void product(float *a, float *b, float *c, int N){
 
     // compute global indexing in 2D
-
     int row = threadIdx.y + blockIdx.y* blockDim.y; 
     int col = threadIdx.x + blockIdx.x* blockDim.x;
     
+    // the condition is used to check that threads outside NxN cant accede the memory invalid memory.
     if(row<N && col <N){
         int index = row + col * N; // column major
         c[index] = a[index] + b[index];
