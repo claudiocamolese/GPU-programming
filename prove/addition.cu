@@ -18,7 +18,7 @@ int main(void){
 
     //CPU: initialize x and y
 
-    for(int i =0; i<N; i++0){
+    for(int i =0; i<N; i++){
         x[i] = 1.0f;
         y[i] = 2.0f;
     }
