@@ -27,7 +27,7 @@ int main(void){
     // CPU: run on 1M elements
     add(N, x, y, f);
 
-    std::cout<< f<<std:endl;
+    std::cout<< f<<std::endl;
 
 
     delete [] x;
