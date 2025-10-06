@@ -43,6 +43,10 @@ int main(int argc, char const *argv[])
     cudaMalloc((void**)&d_b, size);
     cudaMalloc((void**)&d_c, size);
 
+
+    cudaMemcpy(d_a, h_a, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, h_b, size, cudaMemcpyHostToDevice);
+
     dim3 blockSize(N,N);
     dim3 gridSize(1,1);
 
@@ -77,7 +81,7 @@ int main(int argc, char const *argv[])
     }
 
     cudaFree(d_a), cudaFree(d_b), cudaFree(d_c);
-    delete [] h_a, delete [] h_b, delete h_c;
+    delete [] h_a, delete [] h_b, delete [] h_c;
 
     return 0;
 }
