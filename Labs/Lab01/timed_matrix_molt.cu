@@ -10,7 +10,7 @@ __global__ void product(float *A, float *B, float *C, int N) {
     if (row < N && col < N) {
         float sum = 0.0f;
         for (int k = 0; k < N; ++k)
-            sum += A[row * N + k] * B[k * N + col];
+            sum += A[row * N + k] * B[k * N + col]; // A is coalascing, while B not
         C[row * N + col] = sum;
     }
 }
