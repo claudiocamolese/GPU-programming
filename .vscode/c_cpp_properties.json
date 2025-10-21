@@ -1,18 +1,19 @@
 {
-  "configurations": [
-    {
-      "name": "windows-gcc-x64",
-      "includePath": [
-        "${workspaceFolder}/**"
-      ],
-      "compilerPath": "C:/mingw64/bin/gcc.exe",
-      "cStandard": "${default}",
-      "cppStandard": "${default}",
-      "intelliSenseMode": "windows-gcc-x64",
-      "compilerArgs": [
-        ""
-      ]
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "WSL",
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "intelliSenseMode": "linux-gcc-x64",
+            "includePath": [
+    "${workspaceFolder}/**",
+    "/home/claudio/.local/lib/python3.10/site-packages/torch/include",
+    "/home/claudio/.local/lib/python3.10/site-packages/torch/include/torch/csrc/api/include",
+    "/usr/include/python3.10"
+]
+
+        }
+    ],
+    "version": 4
 }

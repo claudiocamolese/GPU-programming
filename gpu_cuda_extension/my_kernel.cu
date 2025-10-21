@@ -1,6 +1,16 @@
 // my_kernel.cu
-find_package(Torch REQUIRED)
-include_directories(${TORCH_INCLUDE_DIRS})
+#include <torch/extension.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+
+__global__ void add_kernel(const float* a, const float* b, float* c, int N) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx < N)
+        c[idx] = a[idx] + b[idx];
+}
+
+void add_cuda(torch::Tensor a, torch::Tensor b, torch::Tensor c) {
+    const int N = a.numel();
     const int threads = 256;
     const int blocks = (N + threads - 1) / threads;
 
