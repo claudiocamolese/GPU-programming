@@ -1,40 +1,27 @@
 {
-<<<<<<< HEAD
-  "configurations": [
-    {
-      "name": "windows-gcc-x64",
-      "includePath": [
-        "${workspaceFolder}/**",
-        "${workspaceFolder}/Labs/Lab01/CGPU-Fall2024-Lab1"
-      ],
-      "compilerPath": "C:/mingw64/bin/gcc.exe",
-      "cStandard": "${default}",
-      "cppStandard": "${default}",
-      "intelliSenseMode": "windows-gcc-x64",
-      "compilerArgs": [
-        ""
-      ]
-    }
-  ],
-  "version": 4
-}
-=======
     "configurations": [
         {
-            "name": "WSL",
-            "compilerPath": "/usr/bin/g++",
-            "cStandard": "${default}",
-            "cppStandard": "${default}",
-            "intelliSenseMode": "linux-gcc-x64",
+            "name": "Win32",
             "includePath": [
-    "${workspaceFolder}/**",
-    "/home/claudio/.local/lib/python3.10/site-packages/torch/include",
-    "/home/claudio/.local/lib/python3.10/site-packages/torch/include/torch/csrc/api/include",
-    "/usr/include/python3.10"
-]
-
+                "c:/Users/Claudio/Desktop/GPU-programming/**",
+                "${workspaceFolder}/Labs/Lab01/CGPU-Fall2024-Lab1"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.26100.0",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "mergeConfigurations": false,
+            "recursiveIncludes": {},
+            "compilerPath": "C:/mingw64/bin/gcc.exe",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4
 }
->>>>>>> b239d320a50d597f96fe72ee064c67d657426e5e
