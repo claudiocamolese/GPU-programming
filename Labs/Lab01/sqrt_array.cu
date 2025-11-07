@@ -3,6 +3,7 @@
 #include <chrono>
 #include <cuda_runtime.h>
 
+
 __global__ void gpu_sqrt(float *arr, int N) {
     int idx = threadIdx.x + blockIdx.x * blockDim.x;
     if (idx < N) {
