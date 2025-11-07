@@ -1,14 +1,14 @@
 import torch
-import my_cuda_extension
+import my_kernel
 
+# Array di esempio
 N = 1024
 a = torch.rand(N, device='cuda')
 b = torch.rand(N, device='cuda')
-c = torch.zeros(N, device='cuda')
 
-my_cuda_extension.add_cuda(a, b, c)
+# Somma tramite CUDA kernel
+c = my_kernel.add_cuda(a, b)
 
-if torch.allclose(c, a + b):
-    print("CUDA kernel works correctly!")
-else:
-    print("Mismatch detected!")
+# Verifica
+print("a[0] + b[0] =", a[0].item(), "+", b[0].item(), "=", c[0].item())
+print("Somma corretta:", torch.allclose(c, a + b))
