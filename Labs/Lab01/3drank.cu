@@ -1,4 +1,4 @@
-#include "cx.h"
+#include "._cx.h"
 
 __device__  int   a[256][512][512];  // file scope
 __device__  float b[256][512][512];  // file scope
