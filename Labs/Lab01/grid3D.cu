@@ -3,17 +3,30 @@
 #include <stdlib.h>
 #include "device_launch_parameters.h"
 
+/*
+Declaring two large 3D arrays. They are allocated in the GPU memory, so they are usable by kernel but not by host functions.
+Usually is not used because:
+    - array dimension is set at compile time and not run time
+    - declaring variables in file scope is deeply depreciated
 
+Note that in C++ a 3D variable is defined as z,y,x while in CUDA is x,y,zn
+*/
 __device__  int   a[256][512][512];  // file scope
 __device__  float b[256][512][512];  // file scope
 
 __global__ void grid3D(int nx,int ny,int nz,int id)
 {
+    /*
+    Compute the threads x,y and z coordinates within its threads block
+    */
 	int x = blockIdx.x*blockDim.x+threadIdx.x; // find (x,y,z) in
 	int y = blockIdx.y*blockDim.y+threadIdx.y; // in arrays
 	int z = blockIdx.z*blockDim.z+threadIdx.z; // 
-	if(x >=nx || y >=ny || z >=nz) return;     // out of range?
+	if(x >=nx || y >=ny || z >=nz) return;     // out of range. Good practice
 
+    /*
+    Computing some values
+    */
 	int array_size = nx*ny*nz;
 	int block_size = blockDim.x*blockDim.y*blockDim.z;
 	int grid_size  =  gridDim.x* gridDim.y* gridDim.z;
@@ -22,9 +35,15 @@ __global__ void grid3D(int nx,int ny,int nz,int id)
 	int block_rank_in_grid  =  (blockIdx.z*gridDim.y+ blockIdx.y)*gridDim.x+ blockIdx.x;
 	int thread_rank_in_grid = thread_rank_in_block + block_size*block_rank_in_grid;
 
-	// do some work here
-	a[z][y][x] = thread_rank_in_grid;
+    /*
+    Store some values into the array a and b using indices derived from the threads position in the 3D thread grid
+    */
+    a[z][y][x] = thread_rank_in_grid;
 	b[z][y][x] = sqrtf((float)a[z][y][x]);
+
+    /*
+    For some thread chosen by the user, we print some of the computed values
+    */
 	if(thread_rank_in_grid == id) {
 		printf("array size   %3d x %3d x %3d = %d\n",nx,ny,nz,array_size);
 		printf("thread block %3d x %3d x %3d = %d\n",blockDim.x,blockDim.y,blockDim.z,block_size);
@@ -41,6 +60,6 @@ int main(int argc,char *argv[])
 	dim3 thread3d(32,8,2); // 32*8*2    = 512
 	dim3  block3d(16,64,128); // 16*64*128 = 131072
 	grid3D<<<block3d,thread3d>>>(512,512,256,id);
-    cudaDeviceSynchronize(); // necessary in Linux to see kernel printf
+    cudaDeviceSynchronize();
 	return 0;
 }
