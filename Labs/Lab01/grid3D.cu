@@ -1,4 +1,8 @@
-#include "._cx.h"
+#include <cuda_runtime.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "device_launch_parameters.h"
+
 
 __device__  int   a[256][512][512];  // file scope
 __device__  float b[256][512][512];  // file scope

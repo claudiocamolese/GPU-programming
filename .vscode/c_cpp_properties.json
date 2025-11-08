@@ -1,27 +1,27 @@
 {
-    "configurations": [
-        {
-            "name": "Win32",
-            "includePath": [
-                "c:/Users/Claudio/Desktop/GPU-programming/**",
-                "${workspaceFolder}/Labs/Lab01/CGPU-Fall2024-Lab1"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "windowsSdkVersion": "10.0.26100.0",
-            "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64",
-            "mergeConfigurations": false,
-            "recursiveIncludes": {},
-            "compilerPath": "C:/mingw64/bin/gcc.exe",
-            "browse": {
-                "limitSymbolsToIncludedHeaders": true
-            }
-        }
-    ],
-    "version": 4
+  "configurations": [
+    {
+      "name": "windows-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/Labs/Lab01/CGPU-Fall2024-Lab1/**"
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "windowsSdkVersion": "10.0.26100.0",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "mergeConfigurations": false,
+      "recursiveIncludes": {},
+      "compilerPath": "C:/mingw64/bin/gcc.exe",
+      "browse": {
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "intelliSenseMode": "windows-gcc-x64"
+    }
+  ],
+  "version": 4
 }
