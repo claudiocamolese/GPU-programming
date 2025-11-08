@@ -21,7 +21,6 @@
 // Define different gemm kernel
 #include <gemm_kernel.cuh>
 
-
 #define REAL float
 #define BLOCK_SIZE 32
 
@@ -78,11 +77,6 @@ int main(int argc, char **argv) {
   }
 
   error = cudaGetDeviceProperties(&deviceProp, devID);
-
-  if (deviceProp.computeMode == cudaComputeModeProhibited) {
-    std::cerr << "Error: device is running in <Compute Mode Prohibited>, no threads can use ::cudaSetDevice() ." <<std::endl;
-    exit(EXIT_SUCCESS);
-  }
 
   if (error != cudaSuccess) {
     printf("cudaGetDeviceProperties returned error code %d, line(%d)\n", error, __LINE__);
