@@ -54,7 +54,10 @@ int main(int argc, char const *argv[])
     /*
     Reducing algorithm in GPU
     */
-   auto start2 = std::chrono::high_resolution_clock::now();
+   cudaEvent_t start2, stop2;
+   float ms;
+   cudaEventCreate(&start2);
+   cudaEventCreate(&stop2);
 
    for(int m = N/2; m > 0; m /= 2){
     /*
@@ -69,11 +72,12 @@ int main(int argc, char const *argv[])
    }
 
     cudaDeviceSynchronize();
-    auto end2 = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> t2 = end2 - start2;
+    cudaEventRecord(stop2);
+    cudaEventSynchronize(stop2);
+    cudaEventElapsedTime(&ms, start2, stop2);
     double gpu_sum = dev_x[0];
 
-    printf("sum of %d random numbers: host %.1f %.3f ms, GPU %.1f %.3f ms\n", N, host_sum, t1.count(), gpu_sum, t2.count());
+    printf("sum of %d random numbers: host %.1f %.3f ms, GPU %.1f %.3f ms\n", N, host_sum, t1.count(), gpu_sum, ms);
 
     return 0;
 }
