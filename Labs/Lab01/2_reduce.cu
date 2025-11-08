@@ -64,6 +64,6 @@ int main(int argc,char *argv[])
 	auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> t2 = end2 - start2;
 	//double gpu_sum = dx[0]/nreps;          // D2H copy (1 word) 
-	printf("sum of %d numbers: host %.1f %.3f ms GPU %.1f %.3f ms\n",N,host_sum,t1,gpu_sum,t2);
+	printf("sum of %d numbers: host %.1f %.3f ms GPU %.1f %.3f ms\n",N,host_sum,t1.count(),gpu_sum,t2.count());
 	return 0;
 }
