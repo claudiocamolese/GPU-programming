@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
     std::chrono::duration<double, std::milli> t2 = end2 - start2;
     double gpu_sum = dev_x[0];
 
-    printf("sum of %d random numbers: host %.1f %.3d ms, GPU %.1f %.3d ms\n", N, host_sum, t1, gpu_sum, t2);
+    printf("sum of %d random numbers: host %.1f %.3f ms, GPU %.1f %.3f ms\n", N, host_sum, t1, gpu_sum, t2);
 
     return 0;
 }
