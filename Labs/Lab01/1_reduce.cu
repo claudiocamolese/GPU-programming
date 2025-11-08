@@ -36,25 +36,24 @@ int main(int argc, char const *argv[])
 
     dev_x = host_x;
     
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start1 = std::chrono::high_resolution_clock::now();
     double host_sum = 0.0;
     for(int i =0; i<N; i++) host_sum += host_x[i];
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> t1 = end - start;
+    auto end1 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> t1 = end1 - start1;
 
     /*
     Reducing algorithm in GPU
     */
+   auto start2 = std::chrono::high_resolution_clock::now();
    for(int m = N/2; m > 0; m /= 2){
     int threads = std::min(256,m);
     int blocks = std::max(m/256,1);
-    auto start = std::chrono::high_resolution_clock::now();
-
     reduce<<<blocks, threads>>>(dev_x.data().get(), m);
     }
     cudaDeviceSynchronize();
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> t2 = end - start;
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> t2 = end2 - start2;
     double gpu_sum = dev_x[0];
 
     printf("sum of %d random numbers: host %.1f %.3d ms, GPU %.1f %.3d ms\n", N, host_sum, t1, gpu_sum, t2);
