@@ -19,7 +19,7 @@
 #include "matrix_utils.h"
 
 // Define different gemm kernel
-#include <gemm_kernel.cuh>
+#include "gemm_kernel.cuh"
 
 #define REAL float
 #define BLOCK_SIZE 32
