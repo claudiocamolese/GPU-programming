@@ -58,6 +58,8 @@ int main(int argc, char const *argv[])
    float ms;
    cudaEventCreate(&start2);
    cudaEventCreate(&stop2);
+   
+   cudaEventRecord(start2);
 
    for(int m = N/2; m > 0; m /= 2){
     /*
