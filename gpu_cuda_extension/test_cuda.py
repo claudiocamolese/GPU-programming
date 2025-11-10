@@ -10,5 +10,5 @@ b = torch.rand(N, device='cuda')
 c = my_kernel.add_cuda(a, b)
 
 # Verifica
-print("a[0] + b[0] =", a[0].item(), "+", b[0].item(), "=", c[0].item())
+print(f"a[0] + b[0] = {a[0].item():.4f} + {b[0].item():.4f} = {c[0].item():.4f}")
 print("Somma corretta:", torch.allclose(c, a + b))
