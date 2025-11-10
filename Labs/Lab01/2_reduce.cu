@@ -1,5 +1,5 @@
 /*
-This code improves 1_reduce because it implements the sjared memory.
+This code improves 1_reduce because it implements the shared memory.
 In this way,  the threads in each threads block can sum its individual accumulated totals and then write a single word with the block-sum to external memory
 */
 
