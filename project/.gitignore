@@ -1,16 +1,14 @@
-# Ignore files without extension.
-# Ignore all
+# Ignore everything
 *
 
-# Unignore all with extensions
-!*.*
+# But not these
+!*.cu
+!*.h
+!*.cpp
+!*.py
 !Makefile
-
-# Unignore all dirs
 !*/
 
-# Ignore all the downloaded data files.
-
+# Ignore build and IDE settings
 build/
-
 .vscode/
