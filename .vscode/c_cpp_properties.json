@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "name": "windows-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/Labs/Lab01/CGPU-Fall2024-Lab1/**",
+        "${workspaceFolder}/Labs/Lab02/cgpu-fall2025-lab2/CGPU-Fall2025-Lab2/**"
+
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "windowsSdkVersion": "10.0.26100.0",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "mergeConfigurations": false,
+      "recursiveIncludes": {},
+      "compilerPath": "C:/mingw64/bin/gcc.exe",
+      "browse": {
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "intelliSenseMode": "windows-gcc-x64"
+    }
+  ],
+  "version": 4
+}
