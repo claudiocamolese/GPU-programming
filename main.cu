@@ -17,6 +17,6 @@ main():
 
 
 int main(){
-    printf("Initialization of the dataset");
+    printf("Initialization of the dataset!");
 
 }
